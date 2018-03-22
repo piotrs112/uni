@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uni;
-
 /**
  *
  * @author piotr
@@ -16,6 +14,7 @@ public class Uni {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        System.out.println("Halo2");
     }
     
 }
