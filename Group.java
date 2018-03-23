@@ -1,4 +1,7 @@
 public class Group implements IGroup {
+
+    //todo: add a Set/List/ArrayList of students
+    
     @Override
     public int getGroupSize() {
         return 0;
@@ -41,6 +44,6 @@ public class Group implements IGroup {
 
     @Override
     public void evaluateAll() {
-
+        //todo: enhanced for, run evaluate() on every student object
     }
 }
