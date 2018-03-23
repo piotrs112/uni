@@ -13,7 +13,7 @@ public class Student implements IStudent {
 
     @Override
     public String getName() {
-        return null;
+        return imie + " " + nazwisko;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Student implements IStudent {
 
     @Override
     public int compareTo(Student o) {
-        return 0;
+        return Float.compare(o.grade, grade);
     }
 
     @Override
