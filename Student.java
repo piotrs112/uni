@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Student implements IStudent {
     private String imie;
     private String nazwisko;
@@ -21,9 +23,15 @@ public class Student implements IStudent {
 
     }
 
+    /**
+     * Przypisuje ocenę używając funkcji pseudolosowej Gaussa
+     */
     @Override
     public void evaluate() {
-
+        Random r = new Random();
+        do {
+            grade = (float) (Math.round((r.nextGaussian() + 3.5) * 2) / 2.);
+        } while (grade < 2.0 || grade > 5.0);
     }
 
     @Override
