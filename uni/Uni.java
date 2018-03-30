@@ -5,31 +5,64 @@
  */
 package uni;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Piotr Socha, Bartosz Sadowski, Łysik Mateusz
  */
-public class Uni {
+public class Uni extends JFrame implements ActionListener{
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+    private JButton bAddGrade, bExit;
+    private JLabel lStudentScreen;
+    
+    
+    
+    public Uni(){
+        setSize(600,600);
+        setTitle("University");
+        setLayout(null);
+        bAddGrade = new JButton("Wstaw ocenę");
+        bAddGrade.setBounds(100,100,100,20);
+        add(bAddGrade);
+        bAddGrade.addActionListener(this);
         
-        Student Kamil = new Student ("Kamil", "wes", 12, 11);
-        System.out.println(Kamil.getName() + " " + Kamil.getGrade());
-        for(int i =0;i<20;i++)
-        {
-        Kamil.evaluate();
-        System.out.println(Kamil.getGrade());
+        bExit = new JButton("Wyjscie");
+        bExit.setBounds(250,50,100,20);
+        add(bExit);
+        bExit.addActionListener(this);
+        
+        lStudentScreen = new JLabel("Studenci:");
+        lStudentScreen.setBounds(50,150,150,20);
+        lStudentScreen.setForeground(Color.BLUE);
+        lStudentScreen.setFont(new Font("SansSerif",Font.BOLD,20));
+        add(lStudentScreen);
+        
+        
+    }
+    public static void main(String[] args)
+    {
+        Uni uni = new Uni();
+        uni.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // wyłącza po wcisnieciu krzyżyka
+        uni.setVisible(true);
+    } 
+    
+    @Override
+    public void actionPerformed(ActionEvent e){         // funkcja służąca do
+        Object source = e.getSource();                  // odczytuje skad pochodzi źródło
+        if(source == bAddGrade){
+            
         }
-        Group Pierwsza = new Group ("Pierwsza");
-        System.out.println(Pierwsza.getgName());
-        Pierwsza.addStudent(Kamil);
-        System.out.println(Pierwsza.getGroupSize());
-        Pierwsza.addStudent(Kamil);
-        System.out.println(Pierwsza.getGroupSize());
-
+        else if(source == bExit){
+            dispose();
+        }
     }
     
 }

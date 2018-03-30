@@ -55,6 +55,7 @@ public class Student implements IStudent {
         return grade;
     }
 
+    @Override
     public void setGrade(float grade) {
         this.grade = grade;
     }
