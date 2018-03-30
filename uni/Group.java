@@ -7,6 +7,7 @@ package uni;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 /**
  *
@@ -46,6 +47,7 @@ public class Group implements IGroup {
         }
         else
         {
+            Collections.sort(list);
             return true;
         }
     }

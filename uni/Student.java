@@ -14,15 +14,16 @@ import java.util.Random;
 public class Student implements IStudent {
     private String name;
     private String surname;
-    private int index;
-    private float grade;
+    private static int index = 0;
+    private float grade = 0;
 
-    public Student(String name, String surname, int index, float grade) {
+    public Student(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.index = index;
-        this.grade = grade;
+        this.index = ++index;
     }
+
+    public int getIndex(){return index;}
 
     @Override
     public String getName() {
@@ -33,6 +34,7 @@ public class Student implements IStudent {
     public void setName(String name) {
 
     }
+
 
     /**
      * Przypisuje ocenę używając funkcji pseudolosowej Gaussa
@@ -46,8 +48,16 @@ public class Student implements IStudent {
     }
 
     @Override
-    public int compareTo(Student o) {
-        return Float.compare(o.grade, grade);
+    public int compareTo(Student s) {
+       int comparator = surname.compareTo(s.surname);
+       if(comparator==0)
+       {
+           return name.compareTo(s.name);
+       }
+       else
+       {
+           return comparator;
+       }
     }
 
     @Override
