@@ -15,18 +15,12 @@ import java.util.Collections;
  */
 public class Group implements IGroup {
 
-    private String gName;
+
     private List<Student> list;
 
-    public Group (String gName)
+    public Group ()
     {
-        this.gName = gName;
         this.list = new ArrayList<>();
-    }
-
-    public String getgName()
-    {
-        return gName;
     }
 
     @Override
@@ -70,11 +64,18 @@ public class Group implements IGroup {
 
     @Override
     public int indexOf(Student s) {
-        return 0;
+        return s.getIndex();
     }
 
     @Override
     public Student studentAt(int index) {
+        for(Student student : list)
+        {
+            if(student.getIndex()==index)
+            {
+                return student;
+            }
+        }
         return null;
     }
 
@@ -97,11 +98,14 @@ public class Group implements IGroup {
 
     @Override
     public void evaluateStudent(int index) {
-
+        studentAt(index).evaluate();
     }
 
     @Override
     public void evaluateAll() {
-        //todo: enhanced for, run evaluate() on every student object
+        for(Student student : list)
+        {
+            student.evaluate();
+        }
     }
 }
