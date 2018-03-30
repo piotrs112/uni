@@ -11,7 +11,7 @@ import java.util.Collections;
 
 /**
  *
- * @author Piotr Socha, Bartosz Sadowski, Łysik Mateusz
+ * @author Piotr Socha, Bartosz Sadowski, Lysik Mateusz
  */
 public class Group implements IGroup {
 
