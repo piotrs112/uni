@@ -5,27 +5,65 @@
  */
 package uni;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Piotr Socha, Bartosz Sadowski, Łysik Mateusz
  */
 public class Group implements IGroup {
 
-    //todo: add a Set/List/ArrayList of students
-    
-    @Override
-    public int getGroupSize() {
-        return 0;
+    private String gName;
+    private List<Student> list;
+
+    public Group (String gName)
+    {
+        this.gName = gName;
+        this.list = new ArrayList<>();
+    }
+
+    public String getgName()
+    {
+        return gName;
     }
 
     @Override
-    public boolean addStudent(Student s) {
-        return false;
+    public int getGroupSize() {
+        return list.size();
+    }
+
+    @Override
+    public boolean addStudent(Student s)
+    {
+        if(isMember(s))
+        {
+            return false;
+        }
+        else if(!list.add(s))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     @Override
     public boolean removeStudent(Student s) {
-        return false;
+        if(!isMember(s))
+        {
+            return false;
+        }
+        else if(!list.remove(s))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     @Override
@@ -40,12 +78,19 @@ public class Group implements IGroup {
 
     @Override
     public boolean isMember(Student s) {
-        return false;
+        if(list.contains(s))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     @Override
     public void evaluateStudent(Student s) {
-
+        s.evaluate();
     }
 
     @Override
