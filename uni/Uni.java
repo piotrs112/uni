@@ -17,12 +17,19 @@ public class Uni {
     public static void main(String[] args) {
         
         Student Kamil = new Student ("Kamil", "wes", 12, 11);
-        System.out.println(Kamil.getName());
+        System.out.println(Kamil.getName() + " " + Kamil.getGrade());
         for(int i =0;i<20;i++)
         {
         Kamil.evaluate();
         System.out.println(Kamil.getGrade());
         }
+        Group Pierwsza = new Group ("Pierwsza");
+        System.out.println(Pierwsza.getgName());
+        Pierwsza.addStudent(Kamil);
+        System.out.println(Pierwsza.getGroupSize());
+        Pierwsza.addStudent(Kamil);
+        System.out.println(Pierwsza.getGroupSize());
+
     }
     
 }
