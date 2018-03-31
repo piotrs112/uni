@@ -7,7 +7,7 @@ package uni;
 
 /**
  *
- * @author Piotr Socha, Bartosz Sadowski, Łysik Mateusz
+ * @author Piotr Socha, Bartosz Sadowski, Lysik Mateusz
  */
 public interface IStudent extends Comparable<Student> {
     String getName();

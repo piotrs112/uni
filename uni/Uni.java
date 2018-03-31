@@ -15,11 +15,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JLabel;
+import javax.swing.*;
+
 import static javax.swing.JOptionPane.*;
 
 public class Uni extends JFrame implements ActionListener{
@@ -76,6 +73,16 @@ public class Uni extends JFrame implements ActionListener{
     }
     
     public static void main(String[] args){
+        try {
+            // Set OS-native look and feel
+            UIManager.setLookAndFeel(
+                    UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (Exception e) {
+            // handle possible exceptions
+            System.out.println(e.getMessage());
+        }
+
         createAndShowGUI();
     } 
     private void createAddRemoveButton(JButton name, int x, int y, String ToolTip){

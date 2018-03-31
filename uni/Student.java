@@ -6,7 +6,7 @@
 package uni;
 
 /**
- * @author Piotr Socha, Bartosz Sadowski, Łysik Mateusz
+ * @author Piotr Socha, Bartosz Sadowski, Lysik Mateusz
  */
 import java.util.Random;
 
