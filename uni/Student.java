@@ -6,7 +6,6 @@
 package uni;
 
 /**
- *
  * @author Piotr Socha, Bartosz Sadowski, Łysik Mateusz
  */
 import java.util.Random;
@@ -15,8 +14,8 @@ public class Student implements IStudent {
     private String name;
     private String surname;
     private int index;
-    private float grade = 0;
-    private static int numberOfStudents=0;
+    private float grade = (float) 0.0;
+    private static int numberOfStudents = 0;
 
     public Student(String name, String surname) {
         this.name = name;
@@ -24,9 +23,13 @@ public class Student implements IStudent {
         this.index = ++numberOfStudents;
     }
 
-    public int getIndex(){return index;}
+    public int getIndex(){
+        return index;
+    }
 
-    public int getNumberOfStudents(){return numberOfStudents;}
+    public int getNumberOfStudents(){
+        return numberOfStudents;
+    }
 
     @Override
     public String getName() {
@@ -35,11 +38,11 @@ public class Student implements IStudent {
 
     @Override
     public void setName(String name) {
-
+        this.name = name;
     }
 
     /**
-     * Przypisuje ocenę używając funkcji pseudolosowej Gaussa
+     * Przypisuje ocenę studentowi używając funkcji pseudolosowej Gaussa
      */
     @Override
     public void evaluate() {

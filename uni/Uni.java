@@ -28,7 +28,7 @@ public class Uni extends JFrame implements ActionListener{
     private JTextArea tStudentScreen;
     private JScrollPane spGroup;
     
-    public Uni(){
+    private Uni(){
         setSize(FRAME_WIDTH,FRAME_HEIGHT);
         setTitle("University");
         setLayout(null);
@@ -51,7 +51,7 @@ public class Uni extends JFrame implements ActionListener{
 
     }
     
-    public static void createAndShowGUI(){
+    private static void createAndShowGUI(){
         Uni uni = new Uni();
         uni.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         uni.setVisible(true);
@@ -83,7 +83,7 @@ public class Uni extends JFrame implements ActionListener{
         if(source == bAddStudent){
             System.out.println("cos");
             String imie= showInputDialog("Podaj imie:");
-            Student student = new Student(imie, imie,1,1);
+            Student student = new Student(imie, imie);
             
             String text = tStudentScreen.getText();
             tStudentScreen.setText(text+ student.getName() + "\n");
