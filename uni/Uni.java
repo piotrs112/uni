@@ -4,64 +4,95 @@
  * and open the template in the editor.
  */
 package uni;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-
 /**
  *
  * @author Piotr Socha, Bartosz Sadowski, Łysik Mateusz
  */
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import static javax.swing.JOptionPane.*;
+
 public class Uni extends JFrame implements ActionListener{
 
-    private JButton bAddGrade, bExit;
-    private JLabel lStudentScreen;
+    private final int FRAME_WIDTH = 600;
+    private final int FRAME_HEIGHT = 600; 
     
+    private int y=5, x=20;                            //do tworzenia przyciskow
     
+    private JButton bAddGroup, bRemoveGroup, bAddStudent, bRemoveStudent, bExit;
+    private JTextArea tStudentScreen;
+    private JScrollPane spGroup;
     
     public Uni(){
-        setSize(600,600);
+        setSize(FRAME_WIDTH,FRAME_HEIGHT);
         setTitle("University");
         setLayout(null);
-        bAddGrade = new JButton("Wstaw ocenę");
-        bAddGrade.setBounds(100,100,100,20);
-        add(bAddGrade);
-        bAddGrade.addActionListener(this);
         
-        bExit = new JButton("Wyjscie");
-        bExit.setBounds(250,50,100,20);
-        add(bExit);
-        bExit.addActionListener(this);
+        //Buttons
+        createButton(bAddGroup, "Add group", x,++y*50);
+        createButton(bRemoveGroup, "Remove group", x,++y*50);
+        createButton(bAddStudent, "Add student", x,++y*50);
         
-        lStudentScreen = new JLabel("Studenci:");
-        lStudentScreen.setBounds(50,150,150,20);
-        lStudentScreen.setForeground(Color.BLUE);
-        lStudentScreen.setFont(new Font("SansSerif",Font.BOLD,20));
-        add(lStudentScreen);
+        createButton(bRemoveStudent, "Remove student",x,++y*50);
+        createButton(bExit, "Exit",x,++y*50);
         
-        
+       //TextField
+       createTextArea(tStudentScreen, 200,20,FRAME_WIDTH-60,FRAME_HEIGHT-200);
+       
+       
+       spGroup=new JScrollPane();
+       spGroup.setBounds(20,20,120,200);
+       add(spGroup);
+
     }
-    public static void main(String[] args)
-    {
-        Uni uni = new Uni();
-        uni.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // wyłącza po wcisnieciu krzyżyka
-        uni.setVisible(true);
-    } 
     
+    public static void createAndShowGUI(){
+        Uni uni = new Uni();
+        uni.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        uni.setVisible(true);
+    }
+    
+    public static void main(String[] args){
+        createAndShowGUI();
+    } 
+    private void createButton(JButton name, String description, int x, int y){
+       name= new JButton(description);
+       name.setBounds(x,y,130,20);
+       add(name);
+       name.addActionListener(this);
+       }
+    
+    private void createTextArea(JTextArea name,int xp, int yp, int xk,int yk){
+       name = new JTextArea();
+       name.setBounds(xp,yp,xk,yk);
+       name.setEditable(false);
+       name.setText("");
+       add(name);
+    }
+    
+    /// to odpowiada za reakcje guzikow
     @Override
-    public void actionPerformed(ActionEvent e){         // funkcja służąca do
-        Object source = e.getSource();                  // odczytuje skad pochodzi źródło
-        if(source == bAddGrade){
+    public void actionPerformed(ActionEvent e){
+        Object source = e.getSource();
+        
+        if(source == bAddStudent){
+            System.out.println("cos");
+            String imie= showInputDialog("Podaj imie:");
+            Student student = new Student(imie, imie,1,1);
+            
+            String text = tStudentScreen.getText();
+            tStudentScreen.setText(text+ student.getName() + "\n");
+        }
+        if(source == bRemoveStudent){
             
         }
-        else if(source == bExit){
-            dispose();
+        if(source == bExit){
+          dispose();
         }
     }
     
