@@ -24,8 +24,12 @@ public class Uni extends JFrame implements ActionListener{
     
     private int y=5, x=20;                            //do tworzenia przyciskow
     
-    private JButton bAddGroup, bRemoveGroup, bAddStudent, bRemoveStudent, bExit;
-    private JTextArea tStudentScreen;
+    private JButton bAddGroup = new JButton("Add group");
+    private JButton bRemoveGroup = new JButton("Remove group");
+    private JButton bAddStudent = new JButton("Add student");
+    private JButton bRemoveStudent = new JButton("Remove student");
+    private JButton bExit = new JButton("Exit");
+    private JTextArea tStudentScreen = new JTextArea();
     private JScrollPane spGroup;
     
     private Uni(){
@@ -59,16 +63,15 @@ public class Uni extends JFrame implements ActionListener{
     
     public static void main(String[] args){
         createAndShowGUI();
-    } 
+    }
+
     private void createButton(JButton name, String description, int x, int y){
-       name= new JButton(description);
        name.setBounds(x,y,130,20);
        add(name);
        name.addActionListener(this);
        }
     
     private void createTextArea(JTextArea name,int xp, int yp, int xk,int yk){
-       name = new JTextArea();
        name.setBounds(xp,yp,xk,yk);
        name.setEditable(false);
        name.setText("");
