@@ -1,6 +1,7 @@
 package uni;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,8 +17,12 @@ public class GUI extends JFrame {
     private JPanel studentsPanel;
     private JToolBar studentsTools;
     private JToolBar groupTools;
+    private JLabel groupLabel;
+    private JLabel studentLabel;
 
     public GUI() {
+        this.setMinimumSize(new Dimension(400,300));
+
         addGroup.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

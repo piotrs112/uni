@@ -18,7 +18,7 @@ import java.util.Collections;
  * @see Student
  */
 public class Group implements IGroup {
-
+    public String groupName;
     /**
      * Contains a list of <code>Student</code> objects.
      */
@@ -27,8 +27,9 @@ public class Group implements IGroup {
     /**
      * Constructs a new Group.
      */
-    public Group ()
+    public Group (String name)
     {
+        groupName = name;
         this.list = new ArrayList<>();
     }
 
