@@ -28,22 +28,14 @@ public class gui2 extends JFrame {
 
     public gui2() {
         //setup
-        newButton(addGroup, "Dodaj grupe", 'k');
-        newButton(removeGroup, "Usun grupe", 'l');
-        newButton(addStudent, "Dodaj studenta", 'n');
-        newButton(removeStudent, "Usun studenta", 'm');
-
-        ArrayList list = new ArrayList<Group>();
-        list.add(new Group("pierwsza"));
-        list.add(new Group("druga"));
-        list.add(new Group("trzecia"));
-
-        newList(groupList, list);
-        this.add(groupList);
-
+        newButton(addGroup, "Dodaj grupe");
+        newButton(removeGroup, "Usun grupe");
+        newButton(addStudent, "Dodaj studenta");
+        newButton(removeStudent, "Usun studenta");
 
         //ustawia minimalny rozmiar okna
-        this.setMinimumSize(new Dimension(400, 300));
+        setMinimumSize(new Dimension(400, 300));
+        setSize(new Dimension(800, 600));
 
         //action listenery przyciskow + -
         addGroup.addActionListener(new ActionListener() {
@@ -85,21 +77,19 @@ public class gui2 extends JFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 String s = studentLabel.getText();
-                JOptionPane.showMessageDialog(null, s);
             }
         });
 
     }
 
 
-    private void newButton(JButton b, String desc, char key) {
+    private void newButton(JButton b, String desc) {
         b = new JButton(desc);
-        b.setMnemonic(key);
+        add(b);
     }
 
-    private void newList(JList l, ArrayList list) {
-        Object[] data = list.toArray();
-        l = new JList(data);
+    private void newList(JList l) {
+        l = new JList();
         l.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         l.setLayoutOrientation(JList.VERTICAL);
     }
@@ -118,8 +108,9 @@ public class gui2 extends JFrame {
 
 
 
-        JFrame frame = new JFrame("GUI_test");
-        frame.setContentPane(new gui2());
+        //JFrame frame = new JFrame("GUI_test");
+        //frame.setContentPane(new gui2());
+        gui2 frame = new gui2();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
