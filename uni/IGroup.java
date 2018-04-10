@@ -6,8 +6,9 @@
 package uni;
 
 /**
- *
- * @author Piotr Socha, Bartosz Sadowski, Lysik Mateusz
+ * @author Piotr Socha
+ * @author Bartosz Sadowski
+ * @author Mateusz Lysik
  */
 public interface IGroup {
     int getGroupSize();

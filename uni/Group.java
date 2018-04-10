@@ -7,7 +7,7 @@ import java.util.Collections;
 /**
  * A group is set of students who, have something in common.
  *<p>
- *The <code>Group</code> class is a list of objects from
+ *The <code>Group</code> is a list of objects from
  * <code>Student</code>class. There are operations, that
  * can be applied to all of these objects.
  *
@@ -18,6 +18,9 @@ import java.util.Collections;
  * @see Student
  */
 public class Group implements IGroup {
+    /**
+     * It's a name of <code>Group</code> object.
+     */
     public String groupName;
     /**
      * Contains a list of <code>Student</code> objects.
@@ -26,6 +29,7 @@ public class Group implements IGroup {
 
     /**
      * Constructs a new Group.
+     * @param name Name of the Group.
      */
     public Group (String name)
     {
@@ -37,7 +41,6 @@ public class Group implements IGroup {
      * Tells how many students are in a group.
      * @return Number of students.
      */
-
     @Override
     public int getGroupSize() {
         return list.size();
@@ -51,7 +54,6 @@ public class Group implements IGroup {
      * @param s Student who joins the group.
      * @return true if successful
      */
-
     @Override
     public boolean addStudent(Student s)
     {
@@ -75,7 +77,6 @@ public class Group implements IGroup {
      * @param s Student who leaves the group.
      * @return true if successful.
      */
-
     @Override
     public boolean removeStudent(Student s) {
         if(!isMember(s))
@@ -97,7 +98,6 @@ public class Group implements IGroup {
      * @param s Student whose index number is checked.
      * @return index number.
      */
-
     @Override
     public int indexOf(Student s) {
         return s.getIndex();
@@ -113,7 +113,6 @@ public class Group implements IGroup {
      * @return null if there is no matching student or
      * Student object matching given index number.
      */
-
     @Override
     public Student studentAt(int index) {
         for(Student student : list)
@@ -151,7 +150,6 @@ public class Group implements IGroup {
      * @param s Evaluated student.
      * @see Student#evaluate()
      */
-
     @Override
     public void evaluateStudent(Student s) {
         s.evaluate();
@@ -165,7 +163,6 @@ public class Group implements IGroup {
      * @param index Evaluated student based on index number.
      * @see Student#evaluate()
      */
-
     @Override
     public void evaluateStudent(int index) {
         studentAt(index).evaluate();
@@ -178,7 +175,6 @@ public class Group implements IGroup {
      * gets a grade, from 2 to 5.
      * @see Student#evaluate() 
      */
-
     @Override
     public void evaluateAll() {
         for(Student student : list)
