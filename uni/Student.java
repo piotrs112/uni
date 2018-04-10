@@ -13,6 +13,7 @@ import java.util.Random;
  * @author Mateusz Lysik
  *
  */
+import java.util.regex.Pattern;
 
 public class Student implements IStudent {
     /**
@@ -65,15 +66,13 @@ public class Student implements IStudent {
      * Getter for number of Students.
      * @return current number of Students.
      */
-    public int getNumberOfStudents(){
+    public static int getNumberOfStudents() {
         return numberOfStudents;
     }
-
     /**
      * Getter for name of the Student.
      * @return String which is sum of name and surname of the Student.
      */
-    @Override
     public String getName() {
         return name + " " + surname;
     }
@@ -82,9 +81,16 @@ public class Student implements IStudent {
      * Setter for name of the Student.
      * @param name changes name of the Student.
      */
-    @Override
     public void setName(String name) {
-        this.name = name;
+        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Boolean b = p.matcher(name).find();
+
+        if (!b) {
+            String[] s = name.split(" ");
+            this.name = s[0];
+            this.surname = s[1];
+
+        }
     }
 
     /**
@@ -92,12 +98,11 @@ public class Student implements IStudent {
      * on normal distribution.
      * @see Random#nextGaussian()
      */
-    @Override
     public void evaluate() {
         Random r = new Random();
         do {
             grade = (float) (Math.round((r.nextGaussian() + 3.5) * 2) / 2.);
-        } while (grade < 2.0 || grade > 5.0 || grade==2.5);
+        } while (grade < 2.0 || grade > 5.0 || grade == 2.5);
     }
 
     /**
@@ -108,15 +113,9 @@ public class Student implements IStudent {
      */
     @Override
     public int compareTo(Student s) {
-       int comparator = surname.compareTo(s.surname);
-       if(comparator==0)
-       {
-           return name.compareTo(s.name);
-       }
-       else
-       {
-           return comparator;
-       }
+        int comparator = surname.compareTo(s.surname);
+        if (comparator == 0) return name.compareTo(s.name);
+        else return comparator;
     }
 
     /**
@@ -134,7 +133,14 @@ public class Student implements IStudent {
      */
     @Override
     public void setGrade(float grade) {
-        this.grade = grade;
+        if (grade >= 2.0 && grade <= 5.0 && grade != 2.5 && grade % 0.5 == 0) {
+            this.grade = grade;
+        }
+    }
+
+    @Override
+    public String toString(){
+        return getName();
     }
 }
 

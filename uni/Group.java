@@ -182,4 +182,13 @@ public class Group implements IGroup {
             student.evaluate();
         }
     }
+
+    @Override
+    public String toString(){
+        return groupName;
+    }
+
+    public List getStudentList(){
+    return list;
+    }
 }
