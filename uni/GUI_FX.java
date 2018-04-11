@@ -19,32 +19,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class GUI_FX extends Application {
-    @FXML
-    private TableColumn<Student, String> studentName = new TableColumn<>();
-
 
     private List<Group> groupList = new ArrayList<Group>();
-    final ObservableList<Group> groups = FXCollections.observableArrayList(groupList);
-
-    void setup(){
-        groupList.add(new Group("abcdef"));
-        groupList.get(0).addStudent(new Student("Michau","idk"));
-
-
-
-        studentName.setCellFactory(param -> new TableCell<>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-
-                if (empty || item == null || item == null) {
-                    setText(null);
-                } else {
-                    setText("abc");
-                }
-            }
-        });
-    }
 
     public static void main(String[] args) {
         launch(args);
@@ -54,7 +30,6 @@ public class GUI_FX extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("GUI_FX.fxml"));
         Scene scene = new Scene(root);
-        setup();
         stage.setTitle("Uni");
         stage.setScene(scene);
         stage.show();

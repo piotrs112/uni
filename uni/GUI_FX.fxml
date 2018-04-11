@@ -7,8 +7,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -31,9 +29,9 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <SplitPane dividerPositions="0.26959247648902823" prefHeight="375.0" prefWidth="640.0">
+            <SplitPane prefHeight="375.0" prefWidth="640.0">
                <items>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox prefHeight="200.0" prefWidth="489.0">
                      <children>
                         <ChoiceBox fx:id="currentGroup" prefWidth="150.0">
                            <VBox.margin>
@@ -42,12 +40,6 @@
                         </ChoiceBox>
                      </children>
                   </VBox>
-                  <TableView fx:id="studentTable" prefHeight="200.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn editable="false" prefWidth="75.0" sortable="false" text="Name" />
-                      <TableColumn editable="false" prefWidth="75.0" sortable="false" text="Grade" />
-                    </columns>
-                  </TableView>
                </items>
             </SplitPane>
          </children>
