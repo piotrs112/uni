@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Collections;
 
 /**
- * A group is set of students who, have something in common.
+ * A group is set of students, who have something in common.
  *<p>
  *The <code>Group</code> is a list of objects from
  * <code>Student</code>class. There are operations, that
@@ -187,12 +187,21 @@ public class Group implements IGroup {
     public String toString(){
         return groupName;
     }
-    
+
+    /**
+     * Returns <code>Student</code> object that has index <code>i</code>
+     * @param i Index number
+     * @return Student object
+     */
     public Student getStudent(int i)
     {
         return list.get(i);
     }
-    
+
+    /**
+     * Returns group's student list
+     * @return List of Students
+     */
     public List getStudentList(){
     return list;
     }
