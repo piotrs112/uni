@@ -21,7 +21,7 @@ public class Group implements IGroup {
     /**
      * It's a name of <code>Group</code> object.
      */
-    public String groupName;
+    private String groupName;
     /**
      * Contains a list of <code>Student</code> objects.
      */
@@ -187,7 +187,12 @@ public class Group implements IGroup {
     public String toString(){
         return groupName;
     }
-
+    
+    public Student getStudent(int i)
+    {
+        return list.get(i);
+    }
+    
     public List getStudentList(){
     return list;
     }

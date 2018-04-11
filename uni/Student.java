@@ -19,11 +19,11 @@ public class Student implements IStudent {
     /**
      *  It's a name of the <object>Student</object>.
      */
-    private String name;
+    private String firstName;
     /**
      * It's a surname of the <object>Student</object>.
      */
-    private String surname;
+    private String lastName;
     /**
      * It's a unique number given to the <code>Student</code>
      * object.
@@ -45,12 +45,12 @@ public class Student implements IStudent {
     /**
      * Constructs new Student, with Name, Surname, and
      * next index number, based on current number of Students.
-     * @param name Name of the Student.
-     * @param surname Surame of the Student.
+     * @param firstName Name of the Student.
+     * @param lastName Surame of the Student.
      */
-    public Student(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
+    public Student(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.index = ++numberOfStudents;
     }
 
@@ -73,22 +73,24 @@ public class Student implements IStudent {
      * Getter for name of the Student.
      * @return String which is sum of name and surname of the Student.
      */
+    @Override
     public String getName() {
-        return name + " " + surname;
+        return firstName + " " + lastName;
     }
 
     /**
      * Setter for name of the Student.
      * @param name changes name of the Student.
      */
+    @Override
     public void setName(String name) {
         Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Boolean b = p.matcher(name).find();
 
         if (!b) {
             String[] s = name.split(" ");
-            this.name = s[0];
-            this.surname = s[1];
+            this.firstName = s[0];
+            this.lastName = s[1];
 
         }
     }
@@ -98,6 +100,7 @@ public class Student implements IStudent {
      * on normal distribution.
      * @see Random#nextGaussian()
      */
+    @Override
     public void evaluate() {
         Random r = new Random();
         do {
@@ -113,8 +116,8 @@ public class Student implements IStudent {
      */
     @Override
     public int compareTo(Student s) {
-        int comparator = surname.compareTo(s.surname);
-        if (comparator == 0) return name.compareTo(s.name);
+        int comparator = lastName.compareTo(s.lastName);
+        if (comparator == 0) return firstName.compareTo(s.firstName);
         else return comparator;
     }
 
