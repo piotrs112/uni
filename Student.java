@@ -84,14 +84,16 @@ public class Student implements IStudent {
      */
     @Override
     public void setName(String name) {
-        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Pattern p = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
         Boolean b = p.matcher(name).find();
 
-        if (!b) {
+         if (!b && name.contains(" ")) {
             String[] s = name.split(" ");
             this.firstName = s[0];
             this.lastName = s[1];
 
+        } else {
+            System.out.println("Zle dane");
         }
     }
 
