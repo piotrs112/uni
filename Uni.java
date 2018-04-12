@@ -56,7 +56,7 @@ public class Uni {
                 System.out.println(pierwsza.studentAt(i).getName());
             }
             catch (NullPointerException n) {
-                System.out.println("Student o indeksie" + i + "nie nalezy do grupy pierwszej");
+                System.out.println("Student o indeksie " + i + " nie nalezy do grupy pierwszej");
             }                    
         }
         druga.addStudent(klaudiusz);
@@ -64,7 +64,7 @@ public class Uni {
         {
            if(group.isMember(klaudiusz))
            {
-               System.out.println(klaudiusz.getName() + "należy do grupy:" + group.toString());
+               System.out.println(klaudiusz.getName() + " należy do grupy: " + group.toString());
            }
         }
         for(int i=0; i<pierwsza.getGroupSize(); i++)
