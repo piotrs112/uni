@@ -6,10 +6,9 @@ import java.util.Collections;
 
 /**
  * A group is set of students, who have something in common.
- *<p>
- *The <code>Group</code> is a list of objects from
- * <code>Student</code>class. There are operations, that
- * can be applied to all of these objects.
+ * <p>
+ * The <code>Group</code> is a list of objects from <code>Student</code>class.
+ * There are operations, that can be applied to all of these objects.
  *
  * @author Piotr Socha
  * @author Bartosz Sadowski
@@ -18,6 +17,7 @@ import java.util.Collections;
  * @see Student
  */
 public class Group implements IGroup {
+
     /**
      * It's a name of <code>Group</code> object.
      */
@@ -29,16 +29,17 @@ public class Group implements IGroup {
 
     /**
      * Constructs a new Group.
+     *
      * @param name Name of the Group.
      */
-    public Group (String name)
-    {
+    public Group(String name) {
         groupName = name;
         this.list = new ArrayList<>();
     }
 
     /**
      * Tells how many students are in a group.
+     *
      * @return Number of students.
      */
     @Override
@@ -47,26 +48,21 @@ public class Group implements IGroup {
     }
 
     /**
-     * Adds student to a group. If object trying to be
-     * added is already a member of a group, it gets rejected.
+     * Adds student to a group. If object trying to be added is already a member
+     * of a group, it gets rejected.
      * <p>
      * After student is added, group is sorted.
+     *
      * @param s Student who joins the group.
      * @return true if successful
      */
     @Override
-    public boolean addStudent(Student s)
-    {
-        if(isMember(s))
-        {
+    public boolean addStudent(Student s) {
+        if (isMember(s)) {
             return false;
-        }
-        else if(!list.add(s))
-        {
+        } else if (!list.add(s)) {
             return false;
-        }
-        else
-        {
+        } else {
             Collections.sort(list);
             return true;
         }
@@ -74,27 +70,24 @@ public class Group implements IGroup {
 
     /**
      * Removes student from the group.
+     *
      * @param s Student who leaves the group.
      * @return true if successful.
      */
     @Override
     public boolean removeStudent(Student s) {
-        if(!isMember(s))
-        {
+        if (!isMember(s)) {
             return false;
-        }
-        else if(!list.remove(s))
-        {
+        } else if (!list.remove(s)) {
             return false;
-        }
-        else
-        {
+        } else {
             return true;
         }
     }
 
     /**
      * Checks index number of selected student.
+     *
      * @param s Student whose index number is checked.
      * @return index number.
      */
@@ -106,19 +99,17 @@ public class Group implements IGroup {
     /**
      * Looks for the Student based on ones index number.
      * <p>
-     * Checks if the group contains a student with given
-     * index number. If there is, returns the student.
-     * If there is no such student returns null.
+     * Checks if the group contains a student with given index number. If there
+     * is, returns the student. If there is no such student returns null.
+     *
      * @param index Index number given.
-     * @return null if there is no matching student or
-     * Student object matching given index number.
+     * @return null if there is no matching student or Student object matching
+     * given index number.
      */
     @Override
     public Student studentAt(int index) {
-        for(Student student : list)
-        {
-            if(student.getIndex()==index)
-            {
+        for (Student student : list) {
+            if (student.getIndex() == index) {
                 return student;
             }
         }
@@ -127,17 +118,15 @@ public class Group implements IGroup {
 
     /**
      * Checks if student is a part of the group.
+     *
      * @param s Student who is checked.
      * @return true if one is contained
      */
     @Override
     public boolean isMember(Student s) {
-        if(list.contains(s))
-        {
+        if (list.contains(s)) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -145,64 +134,69 @@ public class Group implements IGroup {
     /**
      * Given student is evaluated.
      * <p>
-     * Based on normal distribution, student gets
-     * a grade, from 2 to 5.
+     * Based on normal distribution, student gets a grade, from 2 to 5.
+     *
      * @param s Evaluated student.
      * @see Student#evaluate()
      */
     @Override
     public void evaluateStudent(Student s) {
-        s.evaluate();
+        if (isMember(s)) {
+            s.evaluate();
+        }
     }
 
     /**
      * Given student is evaluated.
      * <p>
-     * Based on normal distribution, student gets
-     * a grade, from 2 to 5.
+     * Based on normal distribution, student gets a grade, from 2 to 5.
+     *
      * @param index Evaluated student based on index number.
      * @see Student#evaluate()
      */
     @Override
     public void evaluateStudent(int index) {
-        studentAt(index).evaluate();
+        if(isMember(studentAt(index))){
+            studentAt(index).evaluate();
+        }
     }
 
     /**
      * All students gets evaluated.
      * <p>
-     * Based on normal distribution, every student in the group
-     * gets a grade, from 2 to 5.
-     * @see Student#evaluate() 
+     * Based on normal distribution, every student in the group gets a grade,
+     * from 2 to 5.
+     *
+     * @see Student#evaluate()
      */
     @Override
     public void evaluateAll() {
-        for(Student student : list)
-        {
+        for (Student student : list) {
             student.evaluate();
         }
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return groupName;
     }
 
     /**
      * Returns <code>Student</code> object that has index <code>i</code>
+     *
      * @param i Index number
      * @return Student object
      */
-    public Student getStudent(int i)
-    {
+    public Student getStudent(int i) {
         return list.get(i);
     }
 
     /**
      * Returns group's student list
+     *
      * @return List of Students
      */
-    public List getStudentList(){
-    return list;
+    public List getStudentList() {
+        return list;
     }
 }
