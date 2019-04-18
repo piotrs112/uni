@@ -2,7 +2,7 @@
 
 Java project by students of WuT for programming labs.
 
-##Authors
+## Authors
 
 * Piotr Socha
 * Mateusz Łysik 
